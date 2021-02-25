@@ -5,11 +5,12 @@ const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
+const team = [];
 
 //initial prompt message
 
-const welcome = "Welcome to the team builder website. You can enter all the employees to populate the data into a document. Let's begin"
-console.log(welcome);
+const start = "Welcome to the Team Generator! Enter your employees information below!"
+console.log(start);
 
 //create the questions for the user to enter specific data
 function managerPrompt() {
@@ -41,7 +42,12 @@ function managerPrompt() {
             choices: ['Manager', 'Engineer', 'Intern', 'Finished']
         },
 
-    ])
+    ]).then(answers => {
+        console.log(answers);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+        console.log(manager);
+       team.push(manager);
+    })
 };
 
 function engPrompt() {

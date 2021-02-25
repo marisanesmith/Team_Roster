@@ -46,7 +46,8 @@ function managerPrompt() {
         console.log(answers);
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
         console.log(manager);
-       team.push(manager);
+        team.push(manager);
+        managerPrompt();
     })
 };
 

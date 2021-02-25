@@ -8,9 +8,9 @@ describe('Manager', () => {
             expect(managerObj.name).toEqual('Kate')
             expect(managerObj.id).toEqual(7)
             expect(managerObj.email).toEqual('kate@gmail')
-            expect(managerObj.github).toEqual('suite 2')
+            expect(managerObj.office).toEqual('suite 2')
         })
     })
 });
 
-console.log(managerObj());
+// console.log(managerObj());

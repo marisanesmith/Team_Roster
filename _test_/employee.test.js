@@ -12,4 +12,4 @@ describe('Employee', () => {
     })
 });
 
-console.log(employeeObj());
+// console.log(employeeObj());

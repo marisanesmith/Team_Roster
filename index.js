@@ -1,13 +1,12 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require('path')
-const outPutFolder = path.resolve(__dirname, "output")
-const htmlFile = path.join(outPutFolder, "index.html")
+// const outPutFolder = path.resolve(__dirname, "output")
+// const htmlFile = path.join(outPutFolder, "index.html")
 const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-// const cards = require('./lib/cards')
 const manCard = require('./output/manCard')
 const engCard = require('./output/engCard')
 const intCard = require('./output/intCard')
@@ -15,11 +14,6 @@ const intCard = require('./output/intCard')
 const team = [];
 
 manPrompt()
-
-//initial prompt message
-
-// const start = "Welcome to the Team Generator! Enter your employees information below!"
-// console.log(start);
 
 //create the questions for the user to enter specific data
 function manPrompt() {
@@ -45,12 +39,6 @@ function manPrompt() {
             name: 'office',
             message: "What is the Manager's office number?"
         }
-// ]).then((response) => {
-//     const manager = new Manager(response.name, response.id, response.email, response.office);
-//     managerCard = cards.manCard(manager.name, manager.id, manager.email, manager.office);
-//     team += managerCard;
-//     newTeamMbr();
-// })
     ]).then((response) => {
         const manager = new Manager(response.name, response.id, response.email, response.office);
         team.push(manCard(manager));
@@ -172,10 +160,6 @@ function newTeamMbr() {
 function createTeam() {
     fs.writeFile('./index.html', finalTeam(team), (err) =>
     err ? console.log(err) : console.log ('200; your file is ready'))
-    // if(!fs.existsSync(outPutFolder)){
-    //     fs.mkdirSync(outPutFolder)
-    // }
-    // fs.writeFile(htmlFile, cards(team), "utf-8")
 }
 
 

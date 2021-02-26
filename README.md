@@ -5,24 +5,18 @@
 This application is used for employers to enter the employee roster so that it can generate on a form. 
 
 Table of Contents
-* [Installation](#Installation)
 * [Usage](#Usage)
-* [Contribution](#Contribution)
 * [Tests](#Test)
 * [License](#License)
 * [Questions](#Questions)
 
-## Installation
-pro
+![Team Roster Page](./images/team-roster.png)
 
 ## Usage
-pro
-
-## Contribution
-* pro
+Used the Inquirer package, html, css and js
 
 ## Tests
-* pro
+* Used Jest to run tests on Employee, Engineer, Intern and Manager
 
 ## License
 ![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -34,6 +28,8 @@ You can find out more about the MIT license on the open source page [here](https
 
 Please contact me via email if you have any questions about this application.
 
-* GitHub Profile: [github.com/pro](github.com/pro)
+* GitHub Profile: [github.com/pro](https://github.com/marisanesmith)
 
-* Email: [pro@yahoo.com](pro@yahoo.com)
+* Video Link: [Team Roster Demo](https://drive.google.com/file/d/1lvMw2s2UtXOCoK91Q0aNSBvsFORMloq_/view)
+
+* Email: [pro@yahoo.com](marisanesmith@yahoo.com)

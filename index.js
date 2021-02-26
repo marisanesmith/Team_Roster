@@ -5,6 +5,7 @@ const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
+const cards = require('./lib/cards')
 const team = [];
 
 //initial prompt message
@@ -13,7 +14,7 @@ const start = "Welcome to the Team Generator! Enter your employees information b
 console.log(start);
 
 //create the questions for the user to enter specific data
-function manPrompt() {
+function askMan() {
     inquirer
 .prompt([
         {
@@ -53,7 +54,7 @@ function manPrompt() {
     // })
 };
 
-function engPrompt() {
+function askEng() {
     return inquirer.prompt([
         {
             type: 'input',
@@ -85,7 +86,7 @@ function engPrompt() {
     ])
 };
 
-function intPrompt() {
+function askInt() {
     return inquirer.prompt([
         {
             type: 'input',
@@ -118,10 +119,10 @@ function intPrompt() {
 };
 
 function addMan() {
-    manPrompt().then(function(response) {
-        const manag = new Manager(answers.name, answers.id, answers.email, answers.office);
-        console.log(manag);
-        team.push(manag);
+    askMan().then(function(response) {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+        console.log(manager);
+        team.push(manager);
     })
 }
 // empty array which will store team member info from the prompts above

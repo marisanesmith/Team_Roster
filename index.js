@@ -1,8 +1,7 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require('path')
-// const outPutFolder = path.resolve(__dirname, "output")
-// const htmlFile = path.join(outPutFolder, "index.html")
+
 const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')

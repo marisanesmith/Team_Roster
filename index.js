@@ -5,12 +5,18 @@ const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
+const manCard = require('./lib/cards')
+const engCard = require('./lib/cards')
+const intCard = require('./lib/cards')
+
 const team = [];
+
+manPrompt()
 
 //initial prompt message
 
-const start = "Welcome to the Team Generator! Enter your employees information below!"
-console.log(start);
+// const start = "Welcome to the Team Generator! Enter your employees information below!"
+// console.log(start);
 
 //create the questions for the user to enter specific data
 function manPrompt() {
@@ -35,22 +41,13 @@ function manPrompt() {
             type: 'input',
             name: 'office',
             message: "What is the Manager's office number?"
-        },
-        {
-            type: 'list',
-            name: 'nextEmployee',
-            message: "Enter the next Employee",
-            choices: ['Manager', 'Engineer', 'Intern', 'Finished']
-        },
+        }
 
-    ])
-    // // .then(answers => {
-    // //     console.log(answers);
-    // //     const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
-    // //     console.log(manager);
-    // //     team.push(manager);
-    // //     managerPrompt();
-    // })
+    ]).then((response) => {
+        const manager = new Manager(response.name, response.id, response.email, response.office);
+        team.push(manager);
+        newTeamMbr();
+    })
 };
 
 function engPrompt() {
@@ -74,15 +71,13 @@ function engPrompt() {
             type: 'input',
             name: 'github',
             message: "What is the Engineer's GitHub name?"
-        },
-        {
-            type: 'list',
-            name: 'nextEmployee',
-            message: "Enter the next Employee",
-            choices: ['Manager', 'Engineer', 'Intern', 'Finished']
-        },
+        }
 
-    ])
+    ]).then((response) => {
+        const engineer = new Engineer(response.name, response.id, response.email, response.github);
+        team.push(engineer);
+        newTeamMbr();
+    })
 };
 
 function intPrompt() {
@@ -106,38 +101,40 @@ function intPrompt() {
             type: 'input',
             name: 'school',
             message: "What school did the intern attend?"
-        },
+        }
+
+    ]).then((response) => {
+        const intern = new Intern(response.name, response.id, response.email, response.school);
+        team.push(intern);
+        newTeamMbr();
+    })
+};
+
+function newTeamMbr() {
+    inquirer.prompt ([
         {
             type: 'list',
             name: 'nextEmployee',
             message: "Enter the next Employee",
-            choices: ['Manager', 'Engineer', 'Intern', 'Finished']
+            choices: ['Engineer', 'Intern', 'Finished']
         },
-
-    ])
-};
-
-function addMan() {
-    manPrompt().then(function(response) {
-        const manag = new Manager(answers.name, answers.id, answers.email, answers.office);
-        console.log(manag);
-        team.push(manag);
+    ]).then((response) => {
+        if (response.nextEmployee === "Engineer") {
+            engPrompt() 
+        }
+        else if (response.nextEmployee === "Intern") {
+            intPrompt()
+        }
+        else {
+            createTeam()
+        }
     })
 }
-// empty array which will store team member info from the prompts above
-// const employeeList = [];
+
+function createTeam() {
+    fs.writeFile('cards.js', createReadme, (err) =>
+    err ? console.log(err) : console.log('Successfully created the team generator!')
+    )
+}
 
 
-// .then((input) => {
-//     if (input.employeeName === 'Engineer') {
-//         console.log('engineer');
-//  } else if (imput.employeeName === 'Intern') {
-//         console.log('intern');
-//  } else {
-//      console.log('none')
-//  }
-// })
-
-// .then((answer) => {
-//     const newFile = createRoster(answer)
-// })

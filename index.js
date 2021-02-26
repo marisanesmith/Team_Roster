@@ -20,7 +20,7 @@ manPrompt()
 // console.log(start);
 
 //create the questions for the user to enter specific data
-function askMan() {
+function manPrompt() {
     inquirer
 .prompt([
         {
@@ -51,7 +51,7 @@ function askMan() {
     })
 };
 
-function askEng() {
+function engPrompt() {
     return inquirer.prompt([
         {
             type: 'input',
@@ -81,7 +81,7 @@ function askEng() {
     })
 };
 
-function askInt() {
+function intPrompt() {
     return inquirer.prompt([
         {
             type: 'input',

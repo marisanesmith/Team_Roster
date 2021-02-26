@@ -12,5 +12,3 @@ describe('Intern', () => {
         })
     })
 });
-
-// console.log(internObj());

@@ -1,14 +1,16 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require('path')
+const outPutFolder = path.resolve(__dirname, "output")
+const htmlFile = path.join(outPutFolder, "index.html")
 const Employee = require('./lib/employee.js')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-const cards = require('./lib/cards')
-const manCard = require('./lib/cards')
-const engCard = require('./lib/cards')
-const intCard = require('./lib/cards')
+// const cards = require('./lib/cards')
+const manCard = require('./output/manCard')
+const engCard = require('./output/engCard')
+const intCard = require('./output/intCard')
 
 const team = [];
 
@@ -43,10 +45,15 @@ function manPrompt() {
             name: 'office',
             message: "What is the Manager's office number?"
         }
-
+// ]).then((response) => {
+//     const manager = new Manager(response.name, response.id, response.email, response.office);
+//     managerCard = cards.manCard(manager.name, manager.id, manager.email, manager.office);
+//     team += managerCard;
+//     newTeamMbr();
+// })
     ]).then((response) => {
         const manager = new Manager(response.name, response.id, response.email, response.office);
-        team.push(manager);
+        team.push(manCard(manager));
         newTeamMbr();
     })
 };
@@ -76,7 +83,7 @@ function engPrompt() {
 
     ]).then((response) => {
         const engineer = new Engineer(response.name, response.id, response.email, response.github);
-        team.push(engineer);
+        team.push(engCard(engineer));
         newTeamMbr();
     })
 };
@@ -106,10 +113,40 @@ function intPrompt() {
 
     ]).then((response) => {
         const intern = new Intern(response.name, response.id, response.email, response.school);
-        team.push(intern);
+        team.push(intCard(intern));
         newTeamMbr();
     })
 };
+
+function finalTeam(data) {
+    const teamArrAdd = team.join("");
+    return `<!DOCTYPE html>
+    <lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+        <script src="https://kit.fontawesome.com/9834d6982e.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <title>Team Roster</title>
+        </head>
+    
+        <body>
+            <h1 class="red lighten-2">My Team</h1>
+    
+            <!-- Rows to display team members-->
+            <div class="row">
+                ${teamArrAdd}
+              </div>
+        
+            <!--JavaScript at end of body for optimized loading-->
+            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script src="index.js"></script>
+        </body>
+    </html>`
+}
 
 function newTeamMbr() {
     inquirer.prompt ([
@@ -133,9 +170,12 @@ function newTeamMbr() {
 }
 
 function createTeam() {
-    fs.writeFile('cards.js', createReadme, (err) =>
-    err ? console.log(err) : console.log('Successfully created the team generator!')
-    )
+    fs.writeFile('./index.html', finalTeam(team), (err) =>
+    err ? console.log(err) : console.log ('200; your file is ready'))
+    // if(!fs.existsSync(outPutFolder)){
+    //     fs.mkdirSync(outPutFolder)
+    // }
+    // fs.writeFile(htmlFile, cards(team), "utf-8")
 }
 
 

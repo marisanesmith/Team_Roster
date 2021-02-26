@@ -12,5 +12,3 @@ describe('Engineer', () => {
         })
     })
 });
-
-// console.log(engineerObj());

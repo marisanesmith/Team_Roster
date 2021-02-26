@@ -11,5 +11,3 @@ describe('Employee', () => {
         })
     })
 });
-
-// console.log(employeeObj());

@@ -12,5 +12,3 @@ describe('Manager', () => {
         })
     })
 });
-
-// console.log(managerObj());

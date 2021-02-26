@@ -6,11 +6,12 @@ const engCard = ({name, id, email, github}) => {
           <span class="card-title">Engineer</span>
           <h2> ${name} </h2>
           <p>Employee Id: ${id} </p>
-          <p><i class="fab fa-github"></i><span> GitHub: ${github} </span></p>
+          <p><i class="fab fa-github"></i><span> Github: </span>
+            <a href="https://github.com/${github}" target="_blank" class="white-text"> ${github} </span></p>
         </div>
         <div class="card-action">
             <i class="far fa-envelope"></i>
-            <a href="#" class="white-text"> ${email} </a>
+            <a href="mailto:${email}" class="white-text">${email} </a>
         </div>
       </div>
     </div>`

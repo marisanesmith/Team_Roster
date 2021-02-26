@@ -10,7 +10,7 @@ const intCard = ({name, id, email, school}) => {
         </div>
         <div class="card-action">
             <i class="far fa-envelope"></i>
-            <a href="#" class="white-text"> ${email} </a>
+            <a href="mailto:${email}" class="white-text"> ${email} </a>
         </div>
       </div>
     </div>`

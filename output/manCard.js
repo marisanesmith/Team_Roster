@@ -10,7 +10,7 @@ const manCard = ({name, id, email, office}) => {
         </div>
         <div class="card-action center">
             <i class="far fa-envelope"></i>
-            <a href="#" class="white-text"> ${email} </a>
+            <a href="mailto:${email}" class="white-text"> ${email} </a>
         </div>
       </div>
     </div>

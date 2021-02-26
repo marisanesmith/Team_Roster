@@ -28,8 +28,8 @@ You can find out more about the MIT license on the open source page [here](https
 
 Please contact me via email if you have any questions about this application.
 
-* GitHub Profile: [github.com/pro](https://github.com/marisanesmith)
+* GitHub Profile: [github.com/marisanesmith](https://github.com/marisanesmith)
 
 * Video Link: [Team Roster Demo](https://drive.google.com/file/d/1lvMw2s2UtXOCoK91Q0aNSBvsFORMloq_/view)
 
-* Email: [pro@yahoo.com](marisanesmith@yahoo.com)
+* Email: [marisanesmith@yahoo.com](marisanesmith@yahoo.com)
